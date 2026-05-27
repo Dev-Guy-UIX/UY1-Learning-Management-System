@@ -1,4 +1,4 @@
-# UY1 Learning Management System (C-LMS)
+# UY1 Learning Management System (UY1-LMS)
 
 A console-based learning management platform built in C, developed as part of the
 end-of-semester project for Licence 1 Informatique at the University of Yaoundé 1.
