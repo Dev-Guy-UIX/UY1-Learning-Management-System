@@ -14,10 +14,12 @@
 
 // temp utils
 char *generate_id() ;
+void questions_to_json(Question *question, FILE *file);
+void options_to_json(Option *option, FILE *file) ;
 
 // part 1 [for_author]
-int add_question(Lesson *lesson, const char *question_text);
-Question* get_questions(int lesson_id) ;
+int add_question(char *question_text);
+Question* get_questions(char course_id[37],char chapter_id[37],char lesson_id[37]) ;
 int delete_question(Lesson *lesson, int question_id) ;
 int modify_question(Lesson *lesson, int question_id, const char *new_text) ;
 
