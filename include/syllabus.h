@@ -61,6 +61,7 @@ typedef struct Course
 } Course;
 
     Course* syllabus_create_course(const char title[]);
+    Chapter* syllabus_add_chapter(Course* course, const char title[]);
 
 
 #endif
