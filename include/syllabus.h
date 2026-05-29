@@ -57,6 +57,10 @@ typedef struct Course
 {
     char title[MAX_TITLE];
     Chapter *chapters;
+    struct Course* next;
 } Course;
+
+    Course* syllabus_create_course(const char title[]);
+
 
 #endif
