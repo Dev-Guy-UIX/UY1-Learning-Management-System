@@ -1,39 +1,50 @@
 /**
  * @file qcm.h
  * @brief Function declarations for managing QCM questions and answer options
- * @author [Tsopdieu]
- * @date 26-05-2026
- * @rule This file shouldonly contain function declarations related to QCM management
+ * @author Team E (Sebastian + ArreyBeatz)
+ * @date 29-05-2026
  */
 
 #ifndef QCM_H
 #define QCM_H
 
-/* Pull in the shared constants */
 #include "syllabus.h"
+#include "utils.h"
 
-// temp utils
-char *generate_id() ;
+/* ============================================ */
+/* HELPER FUNCTIONS (Internal use)              */
+/* ============================================ */
+
+char *generate_id(void);
 void questions_to_json(Question *question, FILE *file);
-void options_to_json(Option *option, FILE *file) ;
+void options_to_json(Option *option, FILE *file);
 
-// part 1 [for_author]
-int add_question(char *question_text);
-Question* get_questions(char course_id[37],char chapter_id[37],char lesson_id[37]) ;
-int delete_question(Lesson *lesson, int question_id) ;
-int modify_question(Lesson *lesson, int question_id, const char *new_text) ;
+/* ============================================ */
+/* PROFESSOR FUNCTIONS - Creating Quizzes       */
+/* ============================================ */
 
-//part 2 [for_group_memeber_2]
-int add_option(Question *question, const char *option_text, int is_correct) ;
-Option* get_options(int question_id) ;
-//part 3 [for_group_memeber_3]
-int delete_option(Question *question, int option_id) ;
-int modify_option(Question *question, int option_id, const char *new_text, int is_correct) ;
+int qcm_add_question(Lesson *lesson, char *question_text);
+int qcm_add_option(Question *question, const char *option_text, int is_correct);
+void qcm_add_keywords(Lesson *lesson, char *keywords);
+Question* qcm_get_questions(char course_id[37], char chapter_id[37], char lesson_id[37]);
+int qcm_delete_question(Lesson *lesson, int question_id);
+int qcm_modify_question(Lesson *lesson, int question_id, const char *new_text);
+Option* qcm_get_options(int question_id);
+int qcm_delete_option(Question *question, int option_id);
+int qcm_modify_option(Question *question, int option_id, const char *new_text, int is_correct);
 
+/* ============================================ */
+/* STUDENT FUNCTIONS - Taking Quizzes           */
+/* ============================================ */
 
-// void free_questions(Question *question) ;
-// void free_options(Option *option) ;
+int qcm_run_quiz(Lesson *lesson);
+int qcm_check_answer(Question *question, int answer_number);
 
+/* ============================================ */
+/* HELPER FUNCTIONS                             */
+/* ============================================ */
 
+int qcm_count_questions(Lesson *lesson);
+void qcm_free_questions(Lesson *lesson);
 
 #endif
