@@ -10,6 +10,7 @@
 
 /* Pull in the shared constants */
 #include "syllabus.h"
-
+void save_course(Course *course, const char *filename);
+Course* load_course(const char *filename);
 
 #endif

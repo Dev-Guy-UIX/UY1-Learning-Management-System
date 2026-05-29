@@ -1,1 +1,57 @@
-{}
+{
+  "course": {
+    "title": "UY1 Learning Management System",
+    "chapters": [
+      {
+        "title": "Chapitre 1 - Introduction",
+        "lessons": [
+          {
+            "title": "Leçon 1 - Présentation du système",
+            "questions": [
+              {
+                "text": "Qu'est-ce qu'un LMS ?",
+                "options": [
+                  "Un système de gestion de l'apprentissage",
+                  "Un langage de programmation",
+                  "Un compilateur",
+                  "Un système d'exploitation"
+                ],
+                "answer": 0
+              },
+              {
+                "text": "Quel est le rôle principal de ce projet ?",
+                "options": [
+                  "Gérer des cours et étudiants",
+                  "Compiler du code C",
+                  "Créer des jeux vidéo",
+                  "Gérer des bases de données SQL uniquement"
+                ],
+                "answer": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Chapitre 2 - Structures de données",
+        "lessons": [
+          {
+            "title": "Leçon 1 - Listes chaînées",
+            "questions": [
+              {
+                "text": "Qu'est-ce qu'une liste chaînée ?",
+                "options": [
+                  "Une structure dynamique de nœuds liés",
+                  "Un tableau statique",
+                  "Un fichier binaire",
+                  "Un algorithme de tri"
+                ],
+                "answer": 0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
