@@ -30,3 +30,30 @@
         new_course -> next = NULL;
         return new_course;
     }
+
+
+    Chapter* syllabus_add_chapter(Course* course, const char title[]){
+        if(!course || !title) {
+            fprintf(stderr, "Error: Empty course or title\n");
+            return NULL;
+        }
+        Chapter* new_chap = malloc(sizeof(Chapter));
+        if(!new_chap){
+            fprintf(stderr, "Error failed to allocate memory for Chapter\n");
+            return NULL;
+
+        }
+        safe_strcpy(new_chap->title, title, MAX_TITLE);
+        new_chap->lessons = NULL;
+        new_chap->next =NULL;
+        if(course->chapters == NULL){
+            course->chapters = new_chap;
+        } else {
+            Chapter* current = course->chapters;
+            while (current->next != NULL) {
+                current = current->next;
+            }
+            current -> next = new_chap;
+        }
+        return new_chap;
+    }
