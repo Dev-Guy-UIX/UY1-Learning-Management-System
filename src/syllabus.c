@@ -26,8 +26,8 @@
             return NULL;
         }
         safe_strcpy(new_course->title, title, MAX_TITLE);
-        new_course -> chapters = NULL;
-        new_course -> next = NULL;
+        new_course -> first_chapter = NULL;
+        new_course -> next_course = NULL;
         return new_course;
     }
 
@@ -44,16 +44,45 @@
 
         }
         safe_strcpy(new_chap->title, title, MAX_TITLE);
-        new_chap->lessons = NULL;
-        new_chap->next =NULL;
-        if(course->chapters == NULL){
-            course->chapters = new_chap;
+        new_chap->first_lesson = NULL;
+        new_chap->next_chapter =NULL;
+        if(course->first_chapter == NULL){
+            course->first_chapter = new_chap;
         } else {
-            Chapter* current = course->chapters;
-            while (current->next != NULL) {
-                current = current->next;
+            Chapter* current = course->first_chapter;
+            while (current->next_chapter != NULL) {
+                current = current->next_chapter;
             }
-            current -> next = new_chap;
+            current -> next_chapter = new_chap;
         }
         return new_chap;
+    }
+    Lesson* syllabus_add_lesson(Chapter* chapter, const char title[]){
+        if (!chapter || !title){
+            fprintf(stderr, "Error: NULL chapter or tilte\n");
+            return NULL;
+        }
+        Lesson* new_lesson = malloc(sizeof(Lesson));
+        if(!new_lesson){
+            fprintf(stderr, "Error: malloc failed for Lesson\n");
+            return NULL;
+        }
+        new_lesson->id = 1; // TODO : auto-increment later
+        safe_strcpy(new_lesson->title , title , MAX_TITLE);
+        new_lesson->content[0] = '\0';
+        new_lesson->is_completed = 0;
+        new_lesson->questions = NULL;
+        new_lesson->next_lesson= NULL;
+
+        //Append to the end of the first_lessons list
+        if(chapter->first_lesson == NULL) {
+            chapter->first_lesson = new_lesson;
+        } else {
+            Lesson* current = chapter->first_lesson;
+            while(current->next_lesson  != NULL) {
+                current = current->next_lesson;
+            }
+            current ->next_lesson = new_lesson;
+        }
+        return new_lesson;
     }
