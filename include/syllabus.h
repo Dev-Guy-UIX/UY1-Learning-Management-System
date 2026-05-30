@@ -64,4 +64,8 @@ typedef struct Course
     Chapter* syllabus_add_chapter(Course* course, const char title[]);
     Lesson* syllabus_add_lesson(Chapter* chapter, const char title[] );
 
+    void syllabus_delete_lesson(Chapter* chapter, Lesson* lesson);
+    void syllabus_rename_lesson(Lesson* lesson, const char new_title[]);
+
+
 #endif
