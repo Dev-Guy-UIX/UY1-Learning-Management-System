@@ -86,3 +86,29 @@
         }
         return new_lesson;
     }
+/*
+*/
+void syllabus_delete_lesson(Chapter* chapter, Lesson* lesson){
+    if(!chapter || !lesson) return;
+    // Case 1: Delete first lesson
+    if(chapter->first_lesson == lesson){
+        chapter->first_lesson = lesson->next_lesson;
+        free(lesson);
+        return;
+    }
+    // Case 2: Delete middle/end -find previous node
+    Lesson* current = chapter-> first_lesson;
+    while(current && current->next_lesson) {
+        current = current->next_lesson;
+    }
+    if(current && current->next_lesson == lesson){
+        current->next_lesson = lesson->next_lesson;
+        free(lesson);
+    }
+}
+/*
+*/
+void syllabus_rename_lesson(Lesson* lesson, const char new_title[]){
+    if(!lesson || !new_title) return;
+    safe_strcpy(lesson -> title, new_title, MAX_TITLE);
+}
