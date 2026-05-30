@@ -15,9 +15,11 @@
 /* HELPER FUNCTIONS (Internal use)              */
 /* ============================================ */
 
-char *generate_id(void);
+char *generate_id() ;
 void questions_to_json(Question *question, FILE *file);
-void options_to_json(Option *option, FILE *file);
+void options_to_json(Option *option, FILE *file) ;
+Question* json_to_questions(FILE *file) ;
+Option* json_to_options(FILE *file) ;
 
 /* ============================================ */
 /* PROFESSOR FUNCTIONS - Creating Quizzes       */
