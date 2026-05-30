@@ -20,4 +20,19 @@
 /* Max characters in one QCM answer option */
 #define MAX_OPTION 150
 
+typedef struct Course  Course;
+
+
+/*lit une chaine de caractere  de facon securise*/
+void press_string(char *buffer, int size);
+
+/*lit un entier de facon securise*/
+int press_int(int min, int max);
+
+/*convertir une chaine en minuscule*/
+void minuscule(char *str);
+
+/*rechercher un mot cle dans une liste*/
+void mot_cle(Course *course, const char *mot_cle);
+
 #endif
