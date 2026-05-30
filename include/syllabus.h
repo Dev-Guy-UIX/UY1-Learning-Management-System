@@ -38,7 +38,7 @@ typedef struct Lesson
     char content[MAX_CONTENT];
     int is_completed;
     Question *questions;
-    struct Lesson *next;
+    struct Lesson *next_lesson;
 } Lesson;
 
 /* =================== CHAPTER STRUCTURE =================== */
@@ -47,8 +47,8 @@ typedef struct Chapter
 {
     int id;
     char title[MAX_TITLE];
-    Lesson *lessons;
-    struct Chapter *next;
+    Lesson *first_lesson;
+    struct Chapter *next_chapter;
 } Chapter;
 
 /* =================== COURSE STRUCTURE =================== */
@@ -56,7 +56,16 @@ typedef struct Chapter
 typedef struct Course
 {
     char title[MAX_TITLE];
-    Chapter *chapters;
+    Chapter *first_chapter;
+    struct Course* next_course;
 } Course;
+
+    Course* syllabus_create_course(const char title[]);
+    Chapter* syllabus_add_chapter(Course* course, const char title[]);
+    Lesson* syllabus_add_lesson(Chapter* chapter, const char title[] );
+
+    void syllabus_delete_lesson(Chapter* chapter, Lesson* lesson);
+    void syllabus_rename_lesson(Lesson* lesson, const char new_title[]);
+
 
 #endif
