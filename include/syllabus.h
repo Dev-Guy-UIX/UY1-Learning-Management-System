@@ -24,6 +24,7 @@ typedef struct Option
 /* One QCM question */
 typedef struct Question
 {
+    char id[37]; // UUID string
     char text[MAX_QUESTION];
     Option *options;
     struct Question *next;
